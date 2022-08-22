@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MP4ToMP3Converter.ViewModel;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,6 +24,7 @@ namespace MP4ToMP3Converter
         public MainWindow()
         {
             InitializeComponent();
+            DataContext = new ConverterViewModel();
         }
     }
 }

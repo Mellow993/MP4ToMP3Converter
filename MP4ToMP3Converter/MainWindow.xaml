@@ -5,14 +5,32 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MP4ToMP3Converter"
         mc:Ignorable="d"
-        Title="MP4 to MP3 Converter" Height="300" Width="500">
+        Title="MP4 to MP3 Converter" Height="200" Width="400" ResizeMode="NoResize">
     <Grid>
-        <Button Content="Select" HorizontalAlignment="Left" Margin="350,54,0,0" VerticalAlignment="Top"/>
-        <Button Content="Select" HorizontalAlignment="Left" Margin="350,104,0,0" VerticalAlignment="Top"/>
-        <Label Content="Source" HorizontalAlignment="Left" Margin="29,48,0,0" VerticalAlignment="Top"/>
-        <Label Content="Destination" HorizontalAlignment="Right" Margin="10,99,400,0" VerticalAlignment="Top"/>
-        <TextBox HorizontalAlignment="Left" Margin="110,51,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
-        <TextBox HorizontalAlignment="Left" Margin="130,114,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="40"></RowDefinition>
+            <RowDefinition Height="40"></RowDefinition>
+            <RowDefinition Height="40"></RowDefinition>
+            <RowDefinition Height="40"></RowDefinition>
+            <RowDefinition Height="40"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="450" ></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+
+        <Label Content="MP4 To MP3 Converter" HorizontalAlignment="Center" VerticalAlignment="Top" Grid.Row="0" FontSize="25"/>
+
+        <Label Content="Source" HorizontalAlignment="Left" Grid.Row="1" Margin="6,6,0,8"/>
+        <TextBox IsEnabled="False" Grid.Row="1" Height="20" Margin="75,10,140,10"/>
+        <Button Content="Select" HorizontalAlignment="Left" Grid.Row="1" Height="20" Margin="325,8,0,12" Width="70"/>
+
+        <Label Content="Destination" HorizontalAlignment="Left" Grid.Row="2" Margin="3,6,0,8"/>
+        <TextBox IsEnabled="False" Grid.Row="2" Height="20" Margin="75,10,140,10"/>
+        <Button Content="Select" HorizontalAlignment="Left" Grid.Row="2" Height="20" Margin="325,8,0,12" Width="70"/>
+        <Button Content="Convert" HorizontalAlignment="Left" Margin="25,0,0,0" Grid.Row="3" VerticalAlignment="Center" Width="340"/>
+
+
+        <ProgressBar HorizontalAlignment="Left" Height="20" Grid.Row="4" VerticalAlignment="Top" Width="370" Margin="25,0,0,0"/>
 
     </Grid>
 </Window>

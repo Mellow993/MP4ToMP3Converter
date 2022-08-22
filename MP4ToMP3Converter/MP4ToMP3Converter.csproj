@@ -8,7 +8,6 @@
 
   <ItemGroup>
     <Folder Include="ValueConverters\" />
-    <Folder Include="Services\" />
     <Folder Include="View\" />
   </ItemGroup>
 

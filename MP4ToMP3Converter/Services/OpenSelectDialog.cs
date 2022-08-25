@@ -1,7 +1,4 @@
-﻿using Microsoft.Win32;
-using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System;
 using System.Windows.Forms;
 
 namespace MP4ToMP3Converter.Services
@@ -9,7 +6,7 @@ namespace MP4ToMP3Converter.Services
     internal class OpenSelectDialog
     {
         private string _filepath;
-        public void OpenMYDialog()
+        public void OpenDialog()
         {
             using (System.Windows.Forms.OpenFileDialog openFileDialog = new System.Windows.Forms.OpenFileDialog())
             {

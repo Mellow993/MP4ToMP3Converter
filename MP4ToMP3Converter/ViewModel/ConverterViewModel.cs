@@ -1,16 +1,21 @@
-﻿using System;
+﻿using MP4ToMP3Converter.Services;
+using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Windows.Forms;
+
 
 namespace MP4ToMP3Converter.ViewModel
 {
     internal class ConverterViewModel : ViewModelBase
     {
-
-        private bool _inProgress;
+        #region Fields
+        private bool _inProgress = false;
         private string _sourcePath;
         private string _destinationPath;
+        #endregion
 
+        #region Properties
         public bool InProgress
         {
             get => _inProgress;
@@ -49,44 +54,46 @@ namespace MP4ToMP3Converter.ViewModel
         }
         public DelegateCommand ConvertCommand { get; }
         public DelegateCommand SelectSourceCommand { get; }
-        public DelegateCommand SelectDestinationCommand { get; }
+        public DelegateCommand SelectDestinationCommand { get; set; }
+        #endregion
+
         public ConverterViewModel()
         {
+            SourcePath = "hallo welt";
             ConvertCommand = new DelegateCommand(Convert, CanConvert);
             SelectSourceCommand = new DelegateCommand(SelectSource, CanSelectSource);
             SelectDestinationCommand = new DelegateCommand(SelectDestination, CanSelectDestination);
         }
+
+        #region Execute Methods
         private void Convert()
         {
             InProgress = true;
-            // implement something
+            for (int i = 0; i < 100000000; i++)
+            {
+                i += 1;
+            }
             InProgress = false;
-        }
-
-        private bool CanConvert()
-        {
-            return true;
         }
 
         private void SelectSource()
         {
-            throw new NotImplementedException();
+            MessageBox.Show("hi");
+            OpenSelectDialog opendialog = new OpenSelectDialog();
+            opendialog.OpenDialog();
         }
-        private bool CanSelectSource()
-        {
-            return true;
-        }
-
 
         private void SelectDestination()
         {
-
             throw new NotImplementedException();
         }
+        #endregion
 
-        private bool CanSelectDestination()
-        {
-            return true;
-        }
+        #region CanExecute Methods
+        private bool CanConvert() => true; // !string.IsNullOrWhiteSpace(DestinationPath) && !string.IsNullOrWhiteSpace(SourcePath);
+        private bool CanSelectSource() => true;
+        private bool CanSelectDestination() => true;
+        #endregion
+
     }
 }

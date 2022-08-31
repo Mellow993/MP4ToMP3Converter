@@ -6,7 +6,7 @@ using System.Text;
 
 namespace MP4ToMP3Converter.ViewModel
 {
-    internal class ViewModelBase
+    public class ViewModelBase
     {
         public event PropertyChangedEventHandler? PropertyChanged;
         protected virtual void OnPropertyChanged([CallerMemberName] string propname = "")

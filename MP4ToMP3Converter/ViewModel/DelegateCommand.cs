@@ -1,13 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Windows.Input;
 
 namespace MP4ToMP3Converter.ViewModel
 {
-    internal class DelegateCommand
+    public class DelegateCommand : ICommand
     {
         private Action _execute;
         private Func<bool> _canExecute;
+
         public event EventHandler? CanExecuteChanged;
         public DelegateCommand(Action execute) { _execute = execute; }
         public DelegateCommand(Action execute, Func<bool> canexecute) { _execute = execute; _canExecute = canexecute; }

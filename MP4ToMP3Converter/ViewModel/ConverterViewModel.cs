@@ -1,6 +1,7 @@
 ﻿using MP4ToMP3Converter.Services;
 using System;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Windows.Forms;
 
@@ -33,7 +34,7 @@ namespace MP4ToMP3Converter.ViewModel
             get => _sourcePath;
             set
             {
-                if(value != _sourcePath)
+                if(_sourcePath != value)
                 {
                     _sourcePath = value;
                     OnPropertyChanged(nameof(SourcePath));
@@ -52,14 +53,13 @@ namespace MP4ToMP3Converter.ViewModel
                 }
             }
         }
-        public DelegateCommand ConvertCommand { get; }
-        public DelegateCommand SelectSourceCommand { get; }
+        public DelegateCommand ConvertCommand { get; set; }
+        public DelegateCommand SelectSourceCommand { get; set; }
         public DelegateCommand SelectDestinationCommand { get; set; }
         #endregion
 
         public ConverterViewModel()
         {
-            SourcePath = "hallo welt";
             ConvertCommand = new DelegateCommand(Convert, CanConvert);
             SelectSourceCommand = new DelegateCommand(SelectSource, CanSelectSource);
             SelectDestinationCommand = new DelegateCommand(SelectDestination, CanSelectDestination);
@@ -69,30 +69,33 @@ namespace MP4ToMP3Converter.ViewModel
         private void Convert()
         {
             InProgress = true;
-            for (int i = 0; i < 100000000; i++)
-            {
-                i += 1;
-            }
             InProgress = false;
         }
 
         private void SelectSource()
         {
-            MessageBox.Show("hi");
             OpenSelectDialog opendialog = new OpenSelectDialog();
-            opendialog.OpenDialog();
+            SourcePath = opendialog.OpenDialog();
         }
 
         private void SelectDestination()
         {
-            throw new NotImplementedException();
+            OpenSelectDialog opendialog = new OpenSelectDialog();
+            opendialog.OpenDialog();
         }
         #endregion
 
         #region CanExecute Methods
-        private bool CanConvert() => true; // !string.IsNullOrWhiteSpace(DestinationPath) && !string.IsNullOrWhiteSpace(SourcePath);
+        private bool CanConvert() => !string.IsNullOrWhiteSpace(DestinationPath) && !string.IsNullOrWhiteSpace(SourcePath);
         private bool CanSelectSource() => true;
         private bool CanSelectDestination() => true;
+        #endregion
+
+        #region RaisePropertyChanged
+        private void RaisePropertyChanged([CallerMemberName] string propname = "")
+        {
+            SelectSourceCommand.OnExecuteChanged();
+        }
         #endregion
 
     }

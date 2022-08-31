@@ -14,30 +14,25 @@ namespace MP4ToMP3Converter.Services
                 openFileDialog.Filter = "mp4 files (*.mp4)|*.mp4";
                 openFileDialog.Title = "Select your mp4 file";
                 openFileDialog.InitialDirectory = _initialDirectory;
+
                 if (openFileDialog.ShowDialog() == DialogResult.OK)
                     _filepath = openFileDialog.FileName;
             }
-            if (string.IsNullOrEmpty(_filepath))
-                return string.Empty;
-            else
-                return _filepath;
+            return CheckIfFilepathIsEmpty() ? string.Empty : _filepath;
         }
 
-        public void SaveDialog()
+        public string SaveDialog()
         {
             SaveFileDialog saveFileDialog = new SaveFileDialog();
             saveFileDialog.InitialDirectory = _initialDirectory;
+            saveFileDialog.Title = "Set a new mp3 file name";
 
             if (saveFileDialog.ShowDialog() == DialogResult.OK)
                 _filepath = saveFileDialog.FileName;
+
+            return CheckIfFilepathIsEmpty() ? string.Empty : _filepath;
         }
 
-        //private string ShowDialog(System.Windows.Forms.OpenFileDialog openfiledialog)
-        //{
-        //    if (openfiledialog.ShowDialog() == DialogResult.OK)
-        //        _filepath = openfiledialog.FileName;
-        //    else
-        //        return _filepath = string.Empty;
-        //}
+        private bool CheckIfFilepathIsEmpty() => string.IsNullOrEmpty(_filepath);
     }
 }

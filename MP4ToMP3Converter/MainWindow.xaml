@@ -26,15 +26,14 @@
 
         <Label Content="Source" Height="26" Grid.Row="1" Margin="5,0,0,0"/>
         <TextBox Text="{Binding SourcePath, Mode=OneWay}" IsEnabled="False" Height="20" Margin="82,2,135,4" Grid.Row="1"/>
-        <Button Command="{Binding SelectSourceCommand}"  Content="Select" Height="20" Width="70" Grid.Row="1" Margin="324,4,56,2"
-            />
+        <Button Command="{Binding SelectSourceCommand}"  Content="Select" Height="20" Width="70" Grid.Row="1" Margin="324,4,56,2"/>
 
         <Label Content="Destination" Margin="5,0,0,0" Grid.Row="2"/>
         <TextBox Text="{Binding DestinationPath, Mode=OneWay}" IsEnabled="False" Margin="82,6,135,7" Grid.Row="2"/>
         <Button Content="Select" Margin="324,3,56,7" Grid.Row="2"/>
-        <Button Command="{Binding ConvertCommand}" Content="Convert" Grid.Row="3" Margin="5,5,65,32"/>
+        <Button Content="Convert" Grid.Row="3" Margin="5,5,65,32" Command="{Binding ConvertCommand}"/>
 
-        <ProgressBar Height="20" Grid.Row="3" Margin="7,32,65,5" IsIndeterminate="{Binding InProgress}"/>
+        <ProgressBar Height="20" Grid.Row="3" Margin="7,32,65,5" IsIndeterminate="{Binding InProgress, Mode=TwoWay}"/>
 
     </Grid>
 </Window>

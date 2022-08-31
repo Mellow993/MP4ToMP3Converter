@@ -24,7 +24,6 @@ namespace MP4ToMP3Converter
         public MainWindow()
         {
             InitializeComponent();
-            DataContext = new ConverterViewModel();
         }
     }
 }

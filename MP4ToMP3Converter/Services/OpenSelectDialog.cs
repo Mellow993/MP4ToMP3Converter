@@ -6,7 +6,7 @@ namespace MP4ToMP3Converter.Services
     internal class OpenSelectDialog
     {
         private string _filepath = string.Empty;
-        private string _initialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory);
+        private readonly string _initialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory);
         public string SelectDialog()
         {
             using (System.Windows.Forms.OpenFileDialog openFileDialog = new System.Windows.Forms.OpenFileDialog())

@@ -70,18 +70,19 @@ namespace MP4ToMP3Converter.ViewModel
         {
             InProgress = true;
             InProgress = false;
+            OnPropertyChanged();
         }
 
         private void SelectSource()
         {
             OpenSelectDialog opendialog = new OpenSelectDialog();
-            SourcePath = opendialog.OpenDialog();
+            SourcePath = opendialog.SelectDialog();
         }
 
         private void SelectDestination()
         {
             OpenSelectDialog opendialog = new OpenSelectDialog();
-            opendialog.OpenDialog();
+            DestinationPath = opendialog.SaveDialog();
         }
         #endregion
 
@@ -95,6 +96,7 @@ namespace MP4ToMP3Converter.ViewModel
         private void RaisePropertyChanged([CallerMemberName] string propname = "")
         {
             SelectSourceCommand.OnExecuteChanged();
+            ConvertCommand.OnExecuteChanged();
         }
         #endregion
 
